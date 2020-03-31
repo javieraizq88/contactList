@@ -14,9 +14,9 @@ export const Contacts = () => {
 		<div className="container">
 			<div className="row">
 				<div className="col">
-					<select name="agenda" className="form-control mt-5" 
-					onChange={actions.handleChangeAgenda}
-					value={store.agenda}>
+					<select name="agenda" className="form-control mt-5"
+						onChange={actions.handleChangeAgenda}
+						value={store.agenda}>
 						<option value="">SELECCIONE</option>
 						{
 							!!store.agendas &&
@@ -46,7 +46,7 @@ export const Contacts = () => {
 					<ul className="list-group pull-down" id="contact-list">
 						{
 							!!store.contacts &&
-							store.contacts.map ((contact, i )=> {
+							store.contacts.map((contact, i) => {
 								return (
 									<ContactCard key={i} onDelete={() => setState({ showModal: true })} contact={contact} />
 								)
