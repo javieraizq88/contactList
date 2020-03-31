@@ -23,16 +23,16 @@ export const EditContact = props => {
 		}
 	}, []);
 
-const handleChange = e => {
-	const {name , value}  = e.target;
-	setContact({ ...contact, [name]: value});
-};
+	const handleChange = e => {
+		const { name, value } = e.target;
+		setContact({ ...contact, [name]: value });
+	};
 
 	const handleChange2 = e => {
 		const { name, value } = e.target;
 		const newcontact = Object.assign({}, contact);
 		newcontact[name] = value;
-		setContact({...newcontact}); // si el atributo existe dentro de contacto lo cambia por el valor q estoy obteniendo
+		setContact({ ...newcontact }); // si el atributo existe dentro de contacto lo cambia por el valor q estoy obteniendo
 	};
 
 	return (
@@ -64,8 +64,13 @@ const handleChange = e => {
 						<input type="text" name="address" className="form-control" placeholder="Enter address" value={contact.address}
 							onChange={handleChange} />
 					</div>
-					<button type="button" className="btn btn-success form-control">
-						save
+					<button type="button" className="btn btn-success form-control" onClick={() => {
+						actions.editContact("/" + contactId, contact)
+						//manda el url a flux para q cambie el nombre
+						//recibe el id del contacto q esta guardado en contactId y contact pq son los datos q quiero actualizar del usuario
+						// al apretar el boton, va a guardar la informacion 
+					}} >
+						Save
 					</button>
 					<Link className="mt-3 w-100 text-center" to="/">
 						or get back to contacts
