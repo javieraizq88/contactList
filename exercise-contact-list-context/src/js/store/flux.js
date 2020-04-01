@@ -2,7 +2,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			//Your data structures, A.K.A Entities
-			apiURL: "http://assets.breatheco.de/apis/fake/contact",
+			apiURL: "https://assets.breatheco.de/apis/fake/contact",
 			agendas: null,
 			agenda: null, //agenda seleccionada en ese momento
 			contacts: null, // donde van a estar guardados toedos los contactos
@@ -45,7 +45,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			addContact: (url, data) => {
-				fetch(store, apiURL + url, {
+				const store = getStore();
+				fetch(store, apiURL + "/", {
 					method: "POST",
 					body: JSON.stringify(data),
 					headers: {
@@ -54,9 +55,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 					.then(resp => resp.json())
 					.then(data => {
-						setStore({
-							contacts: data
-						});
+						getActions().loadContactByAgenda();
 					});
 			},
 
