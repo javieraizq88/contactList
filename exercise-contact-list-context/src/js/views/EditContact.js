@@ -25,15 +25,9 @@ export const EditContact = props => {
 
 	const handleChange = e => {
 		const { name, value } = e.target;
-		setContact({ ...contact, [name]: value });
+		setContact({ ...contact, [name]: value }); // si el atributo existe dentro de contacto lo cambia por el valor q estoy obteniendo
 	};
 
-	const handleChange2 = e => {
-		const { name, value } = e.target;
-		const newcontact = Object.assign({}, contact);
-		newcontact[name] = value;
-		setContact({ ...newcontact }); // si el atributo existe dentro de contacto lo cambia por el valor q estoy obteniendo
-	};
 
 	return (
 		<div className="container">

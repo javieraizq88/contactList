@@ -74,6 +74,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 
+			deleteContact: (url) => {
+				const store = getStore(); 
+				fetch(store, apiURL + url, {
+					method: "DELETE",
+					headers: {
+						"Content-Type": "application/json"
+					}
+				})
+					.then(resp => resp.json())
+					.then(data => {
+						getActions().loadContactByAgenda(); //elimina el contacto y vuelve a cargar la lista de contactos
+					});
+			},
 		}
 	};
 };
